@@ -50,6 +50,9 @@ RUN apt-get update && apt-get install -y \
     wget \
     zip --no-install-recommends
 
+# Make `$!/usr/bin/env python` shebangs find python3.
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 RUN git clone https://chromium.googlesource.com/chromium/src/tools/code_coverage /opt/code_coverage && \
     cd /opt/code_coverage && \
     git checkout edba4873b5e8a390e977a64c522db2df18a8b27d && \
